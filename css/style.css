@@ -94,12 +94,37 @@ span {
 }
 .roundBtnContainer {
   float: right;
-  margin: 10px 10px 0 10px;
+  margin: 10px 20px 0 10px;
+}
+.roundBtnContainer p {
+  color: #000;
+  margin: 5px 0 0 0;
+  transition: all 0.5s ease;
 }
 .roundBtnContainer input {
-  background-color: #fff;
   width: 30px;
   height: 30px;
+  display: block;
+  margin: 0 auto;
+  background-color: #fff;
+  transition: all 0.5s ease;
+}
+.roundBtnContainer input:hover {
+  width: 40px;
+  height: 40px;
+  background-color: #b20000;
+  color: #fff;
+  text-align: center;
+  border: 1px solid #b20000;
+}
+.roundBtnContainer input:focus {
+  outline: none;
+}
+.roundBtnContainer input:active {
+  background-color: #222;
+}
+.roundBtnContainer input:hover + p {
+  color: #fff;
 }
 /* ****************** container **************************** */
 .container {

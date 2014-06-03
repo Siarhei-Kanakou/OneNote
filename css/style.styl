@@ -113,12 +113,35 @@ span
 
 .roundBtnContainer
     float: right;
-    margin: 10px 10px 0 10px;
+    margin: 10px 20px 0 10px;
+
+        p
+            color: #000;
+            margin: 5px 0 0 0; 
+            transition: all 0.5s ease;
 
         input
-            background-color: white;
             width: $pin-size;
             height: $pin-size;
+            display: block;
+            margin: 0 auto;
+            background-color: white;
+            transition: all 0.5s ease;
+
+            &:hover 
+                width: 40px;
+                height: 40px;
+                background-color: #b20000;
+                color: #fff;
+                text-align: center;
+                border: 1px solid #b20000;
+            &:focus
+                outline:none;
+            &:active
+                background-color: $base-color;
+
+.roundBtnContainer input:hover + p
+    color: white;
 
 /* ****************** container **************************** */
 .container
@@ -134,10 +157,7 @@ span
     width: 150px;
     height: 150px;
 
-.dateText span
-    font-size: 8em;
-    color: $date-number-color;
-    margin: 0 auto;
-
-
-
+        span
+            font-size: 8em;
+            color: $date-number-color;
+            margin: 0 auto;

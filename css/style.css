@@ -12,13 +12,35 @@ header {
   margin-top: 10px;
 }
 nav {
-  width: 400px;
+  width: 450px;
   height: 70px;
   margin: 0 auto;
+}
+nav section {
+  width: 60px;
+  height: 105px;
+  float: left;
+  overflow: visible;
 }
 nav input {
   position: absolute;
   top: -100px;
+}
+nav input:checked + label {
+  width: 30px;
+  height: 30px;
+  margin: 10px 10px 0 10px;
+  background-color: #b20000;
+}
+nav input:checked + label span {
+  height: 30px;
+  background-color: #000;
+}
+nav input:checked + label p {
+  color: #fff;
+}
+nav input:checked + label:hover p {
+  margin: 10px 0 0 0;
 }
 .roundStyle {
   display: block;
@@ -34,7 +56,7 @@ label {
   height: 30px;
   float: left;
   margin: 10px 10px 0 10px;
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 }
 label:hover {
   width: 40px;
@@ -42,7 +64,8 @@ label:hover {
   background-color: #b20000;
   color: #fff;
   text-align: center;
-  margin-right: 0px;
+  margin-top: 5px;
+  margin-left: 5px;
   border: 1px solid #b20000;
 }
 label:hover p {
@@ -50,7 +73,14 @@ label:hover p {
 }
 label p {
   margin: 10px 0 0 0;
-  transition: all 1s ease;
+  transition: all 0.5s ease;
+}
+label span {
+  width: 2px;
+  height: 0px;
+  background-color: 2px solid #000;
+  margin: 8px 0 0 14px;
+  transition: all 0.5s ease;
 }
 span {
   color: #999;
@@ -78,7 +108,9 @@ span {
   background-color: #222;
 }
 .dateText {
+  clear: both;
   float: left;
+  margin-top: -25px;
   margin-left: 50px;
   width: 150px;
   height: 150px;

@@ -25,14 +25,14 @@ module.exports = function(grunt) {
 		stylus: {
 			compile: {
 				files: {
-					'build/app.css' : ['src/css/*.styl']
+					'build/css/style.css' : ['src/css/*.styl']
 				}
 			}
 		},
 		uglify: {
 			my_target: {
 				files: {
-					'build/app.js': ['src/scripts/*.js']
+					'build/scripts/app.js': ['src/scripts/*.js']
 				}
 			}
 		}

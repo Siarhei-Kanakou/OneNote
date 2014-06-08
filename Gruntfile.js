@@ -32,7 +32,10 @@ module.exports = function(grunt) {
 		uglify: {
 			my_target: {
 				files: {
-					'build/scripts/app.js': ['src/scripts/*.js']
+					'build/scripts/app.js': ['src/scripts/Application.js', 
+											 'src/scripts/controller/*.js',
+											 'src/scripts/view/*.js',
+											 'src/scripts/model/*.js']
 				}
 			}
 		}

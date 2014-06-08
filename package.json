@@ -1,0 +1,9 @@
+{
+	"name": "OneNote",
+	"devDependencies": {
+    	"grunt": "^0.4.4",
+		"grunt-contrib-copy": "^0.5.0",
+    	"grunt-contrib-jshint": "^0.10.0",
+    	"grunt-contrib-stylus": "^0.16.0"
+	}
+}

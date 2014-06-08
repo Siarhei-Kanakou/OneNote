@@ -40,7 +40,7 @@ header
     margin-top: 10px;
 
 nav
-    width: 420px;
+    width: 540px;
     height: $header-height;
     margin: 0 auto;
 
@@ -70,7 +70,18 @@ nav
 nav input:checked + label:hover p 
     margin: 10px 0 0 0;
 
+ nav input:checked + label.noPin
+    width: $pin-size;
+    height: $pin-size;
+    margin: 10px 10px 0 10px;
+    background-color: #444444;
+        span
+            height: 0px;
             
+        p
+            color: #FFF;
+
+          
 
 border-radius()
     -webkit-border-radius: arguments;
@@ -179,11 +190,11 @@ span
             margin: 0 auto;
 
 /* ****************** media queries **************************** */
-@media all and (max-width: 800px)
+@media all and (max-width: 900px)
 
     header
-        width: 800px;
+        width: 900px;
 
 
     .container
-        width: 800px;
+        width: 900px;

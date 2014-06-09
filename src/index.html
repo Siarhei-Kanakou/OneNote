@@ -3,61 +3,62 @@
 	<head>
 		<title> One Note </title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="./css/noteStyle.css"/>
 		<script type="text/javascript" src="./scripts/app.js"></script>
+		
 		<script type="text/javascript">Application.start()</script>
 	</head>
 	<body>
 		<section class="wrapper">
 			<header>
-				<span id="month" class="monthText">June</span>
+				<span id="month" class="monthText"></span>
 				<span class="roundBtnContainer">
 					<input type="button" id="createNote" class="roundStyle" value="+">
 					<p>Create note</p>
 				</span>
 				<nav>
 					<section>
-						<input type="radio" name="daysNdates" id="prev">
-						<label for="prev" class="roundStyle noPin"><p>◄</p><span></span><p>prev</p></label>
+						<label class="roundStyle noPin" id="previous"><p>◄</p><span></span><p>prev</p></label>
 					</section>
 					<section>
 						<input type="radio" name="daysNdates" id="Mon">
-						<label for="Mon" class="roundStyle"><p>1</p><span></span><p>Mon</p></label>
+						<label for="Mon" class="roundStyle" id="0"><p class="day">1</p><span></span><p>Mon</p></label>
 					</section>
 					<section>
 						<input type="radio" name="daysNdates" id="Tue">
-						<label for="Tue" class="roundStyle"><p>2</p><span></span><p>Tue</p></label>
+						<label for="Tue" class="roundStyle" id="1"><p class="day">2</p><span></span><p>Tue</p></label>
 					</section>
 					<section>
 						<input type="radio" name="daysNdates" id="Wed">
-						<label for="Wed" class="roundStyle"><p>3</p><span></span><p>Wed</p></label>
+						<label for="Wed" class="roundStyle" id="2"><p class="day">3</p><span></span><p>Wed</p></label>
 					</section>
 					<section>
 						<input type="radio" name="daysNdates" id="Thu">
-						<label for="Thu" class="roundStyle"><p>4</p><span></span><p>Thu</p></label>
+						<label for="Thu" class="roundStyle" id="3"><p class="day">4</p><span></span><p>Thu</p></label>
 					</section>
 					<section>
 						<input type="radio" name="daysNdates" id="Fri">
-						<label for="Fri" class="roundStyle"><p>5</p><span></span><p>Fri</p></label>
+						<label for="Fri" class="roundStyle" id="4"><p class="day">5</p><span></span><p>Fri</p></label>
 					</section>
 					<section>
 						<input type="radio" name="daysNdates" id="Sat">
-						<label for="Sat" class="roundStyle"><p>6</p><span></span><p>Sat</p></label>
+						<label for="Sat" class="roundStyle" id="5"><p class="day">6</p><span></span><p>Sat</p></label>
 					</section>
 					<section>
 						<input type="radio" name="daysNdates" id="Sun">
-						<label for="Sun" class="roundStyle"><p>7</p><span></span><p>Sun</p></label>
+						<label for="Sun" class="roundStyle" id="6"><p class="day">7</p><span></span><p>Sun</p></label>
 					</section>
 					<section>
-						<input type="radio" name="daysNdates" id="next">
-						<label for="next" class="roundStyle noPin"><p>►</p><span></span><p>next</p></label>
+						<label class="roundStyle noPin" id="next"><p>►</p><span></span><p>next</p></label>
 					</section>
 				</nav>
 			</header>
 			<section class="container">
 				<div class="dateText">
-					<span id="date">02</span>
+					<span id="date"></span>
 				</div>
+				<div id="canvas"></div>
 			</section>
 		</section>
 	</body>

@@ -31,7 +31,7 @@
         noteCaption.className = 'textControl';
         noteCaption.setAttribute('value', this._data.title);
         noteDescription.className = 'textControl';
-        noteDescription.innerText = this._data.description;
+        noteDescription.textContent = this._data.description;
         noteDescription.style.resize = 'none';
         noteDescription.setAttribute('spellcheck', 'false');
         exitButton.className = 'btn';

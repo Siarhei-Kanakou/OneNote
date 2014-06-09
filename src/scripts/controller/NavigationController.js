@@ -18,8 +18,8 @@
                     note;
 
                 week = dateRange.changeCurrentDay(newDate.date.getTime());
-                monthContainer.innerText = Models.Months[newDate.date.getMonth()];
-                dayContainer.innerText = newDate.date.getDate() < 10 ? '0' + newDate.date.getDate() : newDate.date.getDate();
+                monthContainer.textContent = Models.Months[newDate.date.getMonth()];
+                dayContainer.textContent = newDate.date.getDate() < 10 ? '0' + newDate.date.getDate() : newDate.date.getDate();
 
                 //remove all childs
                 while (canvas.firstChild) {
@@ -65,7 +65,7 @@
                     current = dateRange.getCurrentDay();
 
                 for (index = 0; index < length; index++) {
-                    elements[index].innerText = week[index].date.getDate();
+                    elements[index].textContent = week[index].date.getDate();
 
                     if (week[index].date.getTime() === current.date.getTime()) {
 

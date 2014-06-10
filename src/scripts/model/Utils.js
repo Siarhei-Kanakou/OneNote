@@ -17,8 +17,8 @@
     Utils.setTransformParams = function(target, valueX, valueY, isEnabled) {
         isEnabled = isEnabled === false ? isEnabled : true;
 
-        target.style['webkitTransform'] = isEnabled ? 'translate(' + valueX + 'px,' + valueY + 'px)' : '';
-        target.style['mozTransform'] = isEnabled ? 'translate(' + valueX + 'px,' + valueY + 'px)' : '';
-        target.style['transform'] = isEnabled ? 'translate(' + valueX + 'px,' + valueY + 'px)' : '';
+        target.style['webkitTransform'] = isEnabled ? 'translate3d(' + valueX + 'px,' + valueY + 'px, 0px)' : '';
+        target.style['mozTransform'] = isEnabled ? 'translate3d(' + valueX + 'px,' + valueY + 'px, 0px)' : '';
+        target.style['transform'] = isEnabled ? 'translate3d(' + valueX + 'px,' + valueY + 'px, 0px)' : '';
     }
 })(Application);

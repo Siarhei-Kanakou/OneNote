@@ -18,19 +18,13 @@
     Models.DateRange.prototype._initialize = function() {
 
         /*variable region*/
-        var date = new Date();
 
-        /*reset time*/
-        date.setHours(0);
-        date.setMinutes(0);
-        date.setSeconds(0);
-        date.setMilliseconds(0);
-
-        var day = date.getDay(),
+        var date = new Date(),
+            day = date.getDay(),
             startDate = date.getTime() - (day - 1) * Models.DateRange.MILISEC,
             finishDate = date.getTime() + (Models.DateRange.DAYS_QUANTITY - day) * Models.DateRange.MILISEC,
-            current,
             temp,
+            current,
             index;
         /*end region*/
 
@@ -39,10 +33,8 @@
             finishDate = date;
         }
 
-
         for (current = startDate, this._currentWeek = []; current <= finishDate; current += Models.DateRange.MILISEC) {
-            temp = new Models.DateContainer(new Date(current), localStorage[current] && JSON.parse(localStorage[current]) || []);
-            temp.save();
+            temp = new Models.DateContainer(new Date(current), Models.Storage.Notes.get(new Date(current)));
             this._currentWeek.push(temp);
 
             if (current === date.getTime()) {
@@ -58,16 +50,12 @@
     Models.DateRange.prototype.getNextWeek = function() {
         var startDate = this._currentWeek[this._currentWeek.length - 1].date.getTime() + Models.DateRange.MILISEC,
             finishDate = startDate + (Models.DateRange.DAYS_QUANTITY - 1) * Models.DateRange.MILISEC,
-            temp,
             current;
-
-        this._currentDate.save();
 
         //calculate new week
         this._currentWeek = [];
         for (current = startDate; current <= finishDate; current += Models.DateRange.MILISEC) {
-            temp = new Models.DateContainer(new Date(current), localStorage[current] && JSON.parse(localStorage[current]) || []);
-            this._currentWeek.push(temp);
+            this._currentWeek.push(new Models.DateContainer(new Date(current), Models.Storage.Notes.get(new Date(current))));
         }
 
         this._currentDate = this._currentWeek[0];
@@ -78,16 +66,11 @@
     Models.DateRange.prototype.getPreviousWeek = function() {
         var startDate = this._currentWeek[0].date.getTime() - Models.DateRange.DAYS_QUANTITY * Models.DateRange.MILISEC,
             finishDate = startDate + Models.DateRange.MILISEC * (Models.DateRange.DAYS_QUANTITY - 1),
-            temp,
             current;
-
-        this._currentDate.save();
 
         this._currentWeek = [];
         for (current = startDate; current <= finishDate; current += Models.DateRange.MILISEC) {
-            temp = new Models.DateContainer(new Date(current), localStorage[current] && JSON.parse(localStorage[current]) || []);
-
-            this._currentWeek.push(temp);
+            this._currentWeek.push(new Models.DateContainer(new Date(current), Models.Storage.Notes.get(new Date(current))));
         }
 
         this._currentDate = this._currentWeek[this._currentWeek.length - 1];
@@ -114,7 +97,6 @@
         }
 
         range = miliseconds - this._currentWeek[0].date.getTime();
-        this._currentDate.save();
 
         return (this._currentDate = this._currentWeek[range / Models.DateRange.MILISEC]);
     };

@@ -8,7 +8,7 @@
             var createNoteButton = document.getElementById('createNote');
 
             createNoteButton.addEventListener('click', function() {
-                var newNote = new Views.NoteView(dateRange.createNote()),
+                var newNote = new Views.NoteView(dateRange.getCurrentDay().date, dateRange.createNote()),
                     canvas = document.getElementById('canvas');
 
                 newNote.parentEle = canvas;

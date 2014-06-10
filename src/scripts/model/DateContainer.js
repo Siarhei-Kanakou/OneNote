@@ -10,7 +10,7 @@
     };
 
     Models.DateContainer.prototype.save = function() {
-        localStorage[this.date.getTime()] = JSON.stringify(this.notes);
+        Models.Storage.Notes.save(this.date, this.notes);
     };
 
     Models.DateContainer.prototype.createNote = function() {

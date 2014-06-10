@@ -27,7 +27,7 @@
                 }
 
                 for (index = 0; index < length; index++) {
-                    note = new Views.NoteView(newDate.notes[index]);
+                    note = new Views.NoteView(newDate.date, newDate.notes[index]);
                     note.parentEle = canvas;
                     note.render();
                 }

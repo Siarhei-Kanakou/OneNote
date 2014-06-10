@@ -25,6 +25,7 @@ $color2 = #1E62D0;
 .textControl
 	outline: none;
 	border: none;
+	cursor:inherit;
 
   
 	
@@ -34,6 +35,12 @@ input.textControl{
   	margin-left: 10px;
   	background: #F6F6F6;
 }
+
+.move
+	-webkit-transition: all .5s easy;
+	-moz-transition: all .5s easy;
+	transition: all .5s easy;
+	
 
 @-moz-document url-prefix() {
 	input.textControl{

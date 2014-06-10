@@ -1,5 +1,6 @@
 (function(app) {
     var Models = app.getNamespace('Models'),
+        Utils = app.getNamespace('Utils'),
         Views = app.getNamespace('Views');
 
     Views.NoteView = function(date, note) {
@@ -24,6 +25,8 @@
         note.className = 'noteWrapper';
         note.setAttribute('number', this._data.id);
         note.id = 'note-' + this._data.id;
+        note.style.left = (this._data.position.x || 350) + 'px';
+        note.style.top = (this._data.position.y || 150) + 'px';
         note.appendChild(noteHeader);
         note.appendChild(noteBody);
         noteHeader.appendChild(noteCaption);
@@ -48,7 +51,8 @@
             text = this._element.querySelectorAll('.title, .description'),
             self = this,
             index,
-            length;
+            length,
+            dragndrop = false;
 
         closeButton.addEventListener('click', function(e) {
             var note = e.target.parentElement.parentElement;
@@ -65,10 +69,50 @@
                     self._data.description = e.target.value;
                 }
                 Models.Storage.Notes.saveOne(self._date, self._data);
+                console.log('change');
             });
         }
 
+        this._element.addEventListener('mouseup', function(e) {
+            var offsetX,
+                offsetY;
 
+            if (e.target.type === 'button') {
+                return;
+            }
+
+            offsetX = e.offsetX || 0;
+            offsetY = e.offsetY || 0;
+            e.currentTarget.className = e.currentTarget.className.replace(/\w*move/, '');
+            e.currentTarget.style.cursor = 'text';
+            dragndrop = false;
+            e.currentTarget.style.left = e.clientX - offsetX + 'px';
+            e.currentTarget.style.top = e.clientY - offsetY + 'px';
+            self._data.position.x = e.clientX - offsetX;
+            self._data.position.y = e.clientY - offsetY;
+            Models.Storage.Notes.saveOne(self._date, self._data);
+            Utils.setTransformParams(e.currentTarget, 0, 0, false);
+        });
+
+        this._element.addEventListener('mousemove', function(e) {
+            if (!dragndrop) {
+                return;
+            }
+
+            Utils.setTransformParams(e.currentTarget, e.clientX - self._data.position.x, e.clientY - self._data.position.y);
+        });
+
+        this._element.addEventListener('mousedown', function(e) {
+            if (e.target.type === 'button') {
+                return;
+            }
+
+            dragndrop = true;
+            e.currentTarget.className += ' move';
+            e.currentTarget.style.cursor = 'move';
+            self._data.position.x = e.clientX;
+            self._data.position.y = e.clientY;
+        });
     };
 
     Views.NoteView.prototype.render = function() {

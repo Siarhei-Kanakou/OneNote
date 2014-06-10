@@ -12,8 +12,8 @@
         this.description = 'Description';
 
         this.position = {
-            X: 0,
-            Y: 0
+            x: 0,
+            y: 0
         };
     };
 

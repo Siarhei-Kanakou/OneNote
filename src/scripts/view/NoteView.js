@@ -75,14 +75,24 @@
 
             function mouseMoveHandler(e) {
                 var x = e.clientX - parent.offsetLeft,
-                    y = e.clientY - parent.offsetTop;
-                noteView.style.top = y - shiftY + 'px';
-                noteView.style.left = x - shiftX + 'px';
+                    y = e.clientY - parent.offsetTop,
+                    top = y - shiftY,
+                    left = x - shiftX,
+                    right = left + e.currentTarget.clientWidth;
+
+
+                if (top > 0) {
+                    noteView.style.top = y - shiftY + 'px';
+                }
+
+                if (parent.clientWidth > right && right > e.currentTarget.clientWidth) {
+                    noteView.style.left = x - shiftX + 'px';
+                }
             };
 
             function mouseUpHandler(e) {
-                self._data.position.y = e.clientY - parent.offsetTop;
-                self._data.position.x = e.clientX - parent.offsetLeft;
+                self._data.position.y = e.clientY - parent.offsetTop - shiftY;
+                self._data.position.x = e.clientX - parent.offsetLeft - shiftX;
                 Models.Storage.Notes.saveOne(self._date, self._data);
 
                 noteView.style.cursor = 'text';

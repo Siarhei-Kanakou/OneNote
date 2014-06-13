@@ -72,5 +72,5 @@
                 localStorage.removeItem(date.getTime());
             }
         }
-    }
+    };
 })(Application);

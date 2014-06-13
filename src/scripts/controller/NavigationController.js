@@ -37,7 +37,6 @@
             navigationBar.addEventListener('click', function(e) {
                 var doesTargetHave = true,
                     target;
-
                 if (!((doesTargetHave = /\w*roundStyle\w*/.test(e.target.className)) || (/\w*roundStyle*\w/.test(e.target.parentElement.className)))) {
                     return;
                 }

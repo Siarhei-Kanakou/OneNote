@@ -5,77 +5,44 @@
 
     Controllers.NavigationController = {
         bind: function(dateRange) {
-            var navigationBar = document.querySelector('header');
+            var canvasParent = document.querySelector('.container'),
+                header = document.querySelector('.wrapper header'),
+                canvas = new Views.CanvasView(),
+                navigation = new Views.NavigationView(),
+                month = new Views.MonthView(),
+                date = new Views.DateView(),
+                day = dateRange.getCurrentDay().date.getDate();
 
-            function _changeDate(index) {
+            month.month = Models.Months[dateRange.getCurrentDay().date.getMonth()];
+            month.parent = header;
+            month.render(false); //a boolean value as argument is an append flaque
 
-                var monthContainer = document.getElementById('month'),
-                    dayContainer = document.getElementById('date'),
-                    canvas = document.getElementById('canvas'),
-                    newDate = dateRange.getCurrentWeek()[index],
-                    index = 0,
-                    length = newDate.notes.length,
-                    note;
+            date.date = day < 10 ? '0' + day : day;
+            date.parent = canvasParent;
+            date.render();
 
-                week = dateRange.changeCurrentDay(newDate.date.getTime());
-                monthContainer.textContent = Models.Months[newDate.date.getMonth()];
-                dayContainer.textContent = newDate.date.getDate() < 10 ? '0' + newDate.date.getDate() : newDate.date.getDate();
+            canvas.parent = canvasParent;
+            canvas.data = dateRange.getCurrentDay();
+            canvas.render();
 
-                //remove all childs
-                while (canvas.firstChild) {
-                    canvas.removeChild(canvas.firstChild);
-                }
+            navigation.parent = header;
+            navigation.data = dateRange;
+            navigation.render();
 
-                for (index = 0; index < length; index++) {
-                    note = new Views.NoteView(newDate.date, newDate.notes[index]);
-                    note.parentEle = canvas;
-                    note.render();
-                }
-            }
-
-
-            navigationBar.addEventListener('click', function(e) {
-                var doesTargetHave = true,
-                    target;
-                if (!((doesTargetHave = /\w*roundStyle\w*/.test(e.target.className)) || (/\w*roundStyle*\w/.test(e.target.parentElement.className)))) {
-                    return;
-                }
-
-                target = doesTargetHave ? e.target : e.target.parentElement;
-
-                if (target.id === 'previous') {
-                    dateRange.getPreviousWeek();
-                    bind();
-
-                } else if (target.id === 'next') {
-                    dateRange.getNextWeek();
-                    bind();
-                } else if (target.id !== 'createNote') {
-                    _changeDate(parseInt(target.id));
-                }
-
+            dateRange.subscribe(function(date) {
+                canvas.data = date;
+                canvas.refresh();
             });
 
-            bind = function() {
-                var elements = document.querySelectorAll('p.day'),
-                    index = 0,
-                    length = elements.length,
-                    week = dateRange.getCurrentWeek(),
-                    current = dateRange.getCurrentDay();
+            dateRange.subscribe(function(date) {
+                month.month = Models.Months[date.date.getMonth()];
+                month.refresh();
+            });
 
-                for (index = 0; index < length; index++) {
-                    elements[index].textContent = week[index].date.getDate();
-
-                    if (week[index].date.getTime() === current.date.getTime()) {
-
-                        //select current day
-                        elements[index].parentElement.parentElement.children[0].checked = true;
-                        _changeDate(index);
-                    }
-                }
-            };
-
-            bind();
+            dateRange.subscribe(function(d) {
+                date.date = d.date.getDate();
+                date.refresh();
+            });
         }
     };
 })(Application);

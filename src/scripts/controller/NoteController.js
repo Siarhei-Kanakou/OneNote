@@ -5,12 +5,11 @@
 
     Controllers.NoteController = {
         bind: function(dateRange) {
-            var createNoteButton = document.getElementById('createNote'),
-                canvas = document.getElementById('canvas');
+            var createNoteButton = document.getElementById('createNote');
 
             createNoteButton.addEventListener('click', function() {
                 var newNote = new Views.NoteView(dateRange.getCurrentDay().date, dateRange.createNote()),
-                    canvas = document.getElementById('canvas');
+                    canvas = document.querySelector('[id^="canvas-"]');
 
                 newNote.parentEle = canvas;
                 newNote.render();

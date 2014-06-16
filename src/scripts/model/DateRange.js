@@ -8,6 +8,8 @@
 
         this._currentWeek = null;
 
+        this._subscribes = [];
+
         this._initialize();
     };
 
@@ -18,7 +20,6 @@
     Models.DateRange.prototype._initialize = function() {
 
         /*variable region*/
-
         var date = new Date(),
             day = date.getDay(),
             startDate = date.getTime() - (day - 1) * Models.DateRange.MILISEC,
@@ -43,6 +44,15 @@
         }
     };
 
+    Models.DateRange.prototype._callSubscribers = function() {
+        var index,
+            length = this._subscribes.length;
+
+        for (index = 0; index < length; index++) {
+            this._subscribes[index](this._currentDate);
+        }
+    };
+
     Models.DateRange.prototype.createNote = function() {
         return this._currentDate.createNote();
     };
@@ -58,7 +68,7 @@
             this._currentWeek.push(new Models.DateContainer(new Date(current), Models.Storage.Notes.get(new Date(current))));
         }
 
-        this._currentDate = this._currentWeek[0];
+        this.changeCurrentDay(0);
 
         return this._currentWeek;
     };
@@ -73,7 +83,7 @@
             this._currentWeek.push(new Models.DateContainer(new Date(current), Models.Storage.Notes.get(new Date(current))));
         }
 
-        this._currentDate = this._currentWeek[this._currentWeek.length - 1];
+        this.changeCurrentDay(6);
 
         return this._currentWeek;
     };
@@ -86,18 +96,26 @@
         return this._currentDate;
     };
 
-    Models.DateRange.prototype.changeCurrentDay = function(miliseconds) {
-        var range;
+    Models.DateRange.prototype.changeCurrentDay = function(index) {
 
-        if (typeof miliseconds !== 'number') {
-            throw new TypeError('Models.DateRange.getConcreteDay illegal argument error!');
-        } else if (this._currentWeek[0].date.getTime() > miliseconds ||
-            this._currentWeek[this._currentWeek.length - 1].date.getTime() < miliseconds) {
+        if (typeof index !== 'number') {
+            throw new TypeError('Models.DateRange.changeCurrentDay illegal argument error!');
+        } else if (index < 0 || index > 6) {
             throw new RangeError('Date is out of the range!');
         }
 
-        range = miliseconds - this._currentWeek[0].date.getTime();
+        this._currentDate = this._currentWeek[index];
 
-        return (this._currentDate = this._currentWeek[range / Models.DateRange.MILISEC]);
+        this._callSubscribers();
+
+        return this._currentDate;
     };
+
+    Models.DateRange.prototype.subscribe = function(handler) {
+        if (typeof handler !== 'function') {
+            throw new TypeError('Illegal argument!');
+        }
+
+        this._subscribes.push(handler);
+    }
 })(Application);

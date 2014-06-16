@@ -20,7 +20,12 @@ module.exports = function(grunt) {
 			}
 		},
 		jshint: {
-			all: ['src/scripts/*.js']
+			all: [
+				'src/scripts/*.js',
+				'src/scripts/model/*.js',
+				'src/scripts/controller/*.js',
+				'src/scripts/view/*.js'
+			]
 		},
 		stylus: {
 			compile: {
@@ -34,9 +39,9 @@ module.exports = function(grunt) {
 				files: {
 					'build/scripts/app.js': [
 						'src/scripts/Application.js',
+						'src/scripts/model/*.js',
 						'src/scripts/controller/*.js',
-						'src/scripts/view/*.js',
-						'src/scripts/model/*.js'
+						'src/scripts/view/*.js'
 					]
 				}
 			}

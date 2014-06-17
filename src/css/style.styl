@@ -1,0 +1,206 @@
+$base-font-size = 12px
+$header-color = #FFFFFF
+$base-color = #222222
+$header-height = 70px
+$left-margin-for-date = 50px
+$date-number-color = #444444
+$pin-size = 30px
+$pin-size2 = 35px
+$pin-color = #B20000
+
+/* ****************** reset **************************** */
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, dd, ol, ul, li, label, footer, header, menu, nav,  section 
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section 
+    display: block;
+
+
+body
+    font-family:  Mypiad Pro, Arial, Helvetica, sans-serif;
+    font-size: $base-font-size;
+    background-color: $header-color;
+    font-weight: 200;
+    line-height: 1;
+
+/* ****************** header **************************** */
+
+header
+    width: 100%;
+    height: $header-height;
+    background-color: $header-color;
+    margin-top: 10px;
+
+nav
+    width: 540px;
+    height: $header-height;
+    margin: 0 auto;
+
+    section
+        width: 60px;
+        height: 105px;
+        float: left;
+        overflow: visible;
+
+    input
+        position: absolute;
+        top: -100px;
+
+        &:checked + label
+            width: $pin-size;
+            height: $pin-size;
+            margin: 10px 10px 0 10px;
+            background-color: #B20000;
+
+                span
+                    height: 30px;
+                    background-color: #000;
+                    
+                p
+                    color: #FFF;
+
+nav input:checked + label:hover p 
+    margin: 10px 0 0 0;
+
+ nav input:checked + label.noPin
+    width: $pin-size;
+    height: $pin-size;
+    margin: 10px 10px 0 10px;
+    background-color: #444444;
+        span
+            height: 0px;
+            
+        p
+            color: #FFF;
+
+          
+
+border-radius()
+    -webkit-border-radius: arguments;
+    -moz-border-radius: arguments;
+    border-radius: arguments;
+
+.roundStyle
+    display: block;
+    border: 1px solid $base-color;
+    border-radius: 100px;
+    text-align: center;
+    cursor: pointer;
+    
+label
+    width: $pin-size;
+    height: $pin-size;
+    float:left;
+    margin: 10px 10px 0 10px;
+    transition: all 0.5s ease;
+
+    &:hover
+        width: 40px;
+        height: 40px;
+        background-color: $pin-color;
+        color: white;
+        text-align: center;
+        margin-top: 5px;
+        margin-left: 5px;
+        border: 1px solid $pin-color;
+
+    &:hover
+        p
+            margin: 15px 0 0 0;
+
+    p
+        margin: 10px 0 0 0;
+        transition: all 0.5s ease;
+
+    span 
+        width: 2px;
+        height: 0px;
+        background-color: 2px solid black;
+        margin: 8px 0 0 14px;
+        transition: all 0.5s ease;
+
+
+span
+    color: #999999;
+    display: block;
+
+.monthText
+    width: $header-height;
+    margin: 20px 0 0 $left-margin-for-date;
+    font-size: 3.5em;
+    float: left;
+
+.roundBtnContainer
+    float: right;
+    margin: 10px 20px 0 10px;
+
+        p
+            color: #000;
+            margin: 5px 0 0 0; 
+            transition: all 0.5s ease;
+
+        input
+            width: $pin-size;
+            height: $pin-size;
+            display: block;
+            margin: 0 auto;
+            background-color: white;
+            transition: all 0.5s ease;
+
+            &:hover 
+                width: 40px;
+                height: 40px;
+                background-color: #b20000;
+                color: #fff;
+                text-align: center;
+                border: 1px solid #b20000;
+            &:focus
+                outline:none;
+            &:active
+                background-color: $base-color;
+
+.roundBtnContainer input:hover + p
+    color: white;
+
+/* ****************** container **************************** */
+.container
+    width 100%;
+    height: 1000px;
+    background-color: $base-color;
+
+#canvas
+    width 100%;
+    height: 1000px;
+    position:relative;
+
+.dateText
+    clear: both;
+    float: left;
+    margin-top: -25px;
+    margin-left: $left-margin-for-date;
+    width: 150px;
+    height: 150px;
+
+        span
+            font-size: 8em;
+            color: $date-number-color;
+            margin: 0 auto;
+
+/* ****************** media queries **************************** */
+@media all and (max-width: 900px)
+
+    header
+        width: 900px;
+
+
+    .container
+        width: 900px;
+

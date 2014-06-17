@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> One Note </title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../build/css/style.css"/>
+		<script type="text/javascript" src="./scripts/Application.js"></script>
+		
+		
+		<!-- Models region -->
+		<script type="text/javascript" src="./scripts/model/Utils.js"></script>
+		<script type="text/javascript" src="./scripts/model/DaysEnum.js"></script>
+		<script type="text/javascript" src="./scripts/model/DayNames.js"></script>
+		<script type="text/javascript" src="./scripts/model/Months.js"></script>
+		<script type="text/javascript" src="./scripts/model/Note.js"></script>
+		<script type="text/javascript" src="./scripts/model/DateContainer.js"></script>
+		<script type="text/javascript" src="./scripts/model/DateRange.js"></script>
+		<script type="text/javascript" src="./scripts/model/Storage.js"></script>
+		<!-- end region -->
+
+		<!-- Controllers region-->
+		<script type="text/javascript" src="./scripts/controller/NavigationController.js"></script>
+		<script type="text/javascript" src="./scripts/controller/NoteController.js"></script>
+		<!-- end region-->
+
+		<!-- Views region-->
+		<script type="text/javascript" src="./scripts/view/NoteView.js">`</script>
+		<script type="text/javascript" src="./scripts/view/CanvasView.js">`</script>
+		<script type="text/javascript" src="./scripts/view/NavigationView.js">`</script>
+		<script type="text/javascript" src="./scripts/view/DateView.js">`</script>
+		<script type="text/javascript" src="./scripts/view/MonthView.js">`</script>
+
+
+		<!-- end region-->
+
+		<script type="text/javascript">Application.start()</script>
+	</head>
+	<body>
+		<section class="wrapper">
+			<header>
+				<span class="roundBtnContainer">
+					<input type="button" id="createNote" class="roundStyle" value="+">
+					<p>Create note</p>
+				</span>
+			</header>
+			<section class="container">
+			</section>
+		</section>
+	</body>
+</html>

@@ -21,10 +21,7 @@ module.exports = function(grunt) {
 		},
 		jshint: {
 			all: [
-				'src/scripts/*.js',
-				'src/scripts/model/*.js',
-				'src/scripts/controller/*.js',
-				'src/scripts/view/*.js'
+				'src/scripts/**/*.js',
 			]
 		},
 		stylus: {
@@ -50,9 +47,9 @@ module.exports = function(grunt) {
 	
 	grunt.registerTask('default', [
 		'clean',
+		'jshint',
 		'copy',
 		'stylus',
-		'jshint',
 		'uglify'
 	]);
 };

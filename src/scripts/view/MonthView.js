@@ -20,7 +20,7 @@
         this._element.className = "monthText";
 
         if (this.month) {
-            this._element.innerText = this.month;
+            this._element.textContent = this.month;
         }
     };
 
@@ -40,7 +40,7 @@
 
     Views.MonthView.prototype.refresh = function() {
         if (this.month) {
-            this._element.innerText = this.month;
+            this._element.textContent = this.month;
         }
     };
 

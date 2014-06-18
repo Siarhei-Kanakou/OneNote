@@ -117,5 +117,5 @@
         }
 
         this._subscribes.push(handler);
-    }
+    };
 })(Application);

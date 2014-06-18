@@ -4,7 +4,7 @@
 
     Views.NavigationView = function() {
 
-        this.id = 'navigation-view-' + ++Views.NavigationView.count;
+        this.id = 'navigation-view-' + (++Views.NavigationView.count);
 
         this._element = null;
 
@@ -40,7 +40,7 @@
         this._element.innerHTML = '';
 
         child = document.createElement('section');
-        child.innerHTML = previousNextButtonMarkup.replace(/\{0\}/g, 'previous').replace(/\{1\}/g, '◄').replace(/\{2\}/g, 'prev')
+        child.innerHTML = previousNextButtonMarkup.replace(/\{0\}/g, 'previous').replace(/\{1\}/g, '◄').replace(/\{2\}/g, 'prev');
         this._element.appendChild(child);
 
         for (index = 0; index < length; index++) {
@@ -59,7 +59,7 @@
         child = document.createElement('section');
         child.innerHTML = previousNextButtonMarkup.replace(/\{(0|2)\}/g, 'next').replace(/\{1\}/g, '►');
         this._element.appendChild(child);
-    }
+    };
 
     Views.NavigationView.prototype._buildElement = function() {
         this._element = document.createElement('nav');
@@ -116,4 +116,4 @@
     };
 
     Views.NavigationView.count = 0;
-})(Application)
+})(Application);

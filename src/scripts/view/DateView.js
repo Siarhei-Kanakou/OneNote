@@ -3,7 +3,7 @@
 
     Views.DateView = function() {
 
-        this.id = 'date-container-' + ++Views.DateView.count;
+        this.id = 'date-container-' + (++Views.DateView.count);
 
         this.date = null;
 
@@ -38,4 +38,4 @@
 
         this.parent.appendChild(this._element);
     };
-})(Application)
+})(Application);

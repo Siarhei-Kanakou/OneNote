@@ -3,7 +3,7 @@
 
     Views.MonthView = function() {
 
-        this.id = 'month-view-' + ++Views.MonthView.count;
+        this.id = 'month-view-' + (++Views.MonthView.count);
 
         this.month = '';
 
@@ -44,4 +44,4 @@
         }
     };
 
-})(Application)
+})(Application);

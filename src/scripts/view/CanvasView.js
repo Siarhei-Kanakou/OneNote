@@ -4,14 +4,14 @@
 
     Views.CanvasView = function() {
 
-        this.id = 'canvas-' + ++Views.CanvasView.count;
+        this.id = 'canvas-' + (++Views.CanvasView.count);
 
         this.parent = null; //DOM element
 
         this._element = null;
 
         this.data = null;
-    }
+    };
 
     Views.CanvasView.prototype._buildElement = function() {
         var child,
@@ -55,7 +55,7 @@
             date.save();
 
             parent.removeChild(element);
-        };
+        }
 
         this._element.addEventListener('click', function(e) {
             if (e.target.classList.contains('delete')) {
@@ -98,7 +98,7 @@
                 if (parent.clientWidth > right && right > noteView.clientWidth) {
                     noteView.style.left = x - shiftX + 'px';
                 }
-            };
+            }
 
             function mouseUpHandler(e) {
 
@@ -125,7 +125,7 @@
 
                 parent.removeEventListener('mouseup', mouseUpHandler);
                 parent.removeEventListener('mousemove', mouseMoveHandler);
-            };
+            }
 
             parent.addEventListener('mousemove', mouseMoveHandler);
             parent.addEventListener('mouseup', mouseUpHandler);
